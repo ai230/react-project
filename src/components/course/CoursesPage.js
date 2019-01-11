@@ -14,6 +14,32 @@ class CoursesPage extends React.Component {
     this.onClickSave = this.onClickSave.bind(this);
   }
 
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+  }
+
+  hydrateStateWithLocalStorage() {
+    // for all items in state
+    for (let key in this.state) {
+      // if the key exists in localStorage
+      if (localStorage.hasOwnProperty(key)) {
+        // get the key's value from localStorage
+        let value = localStorage.getItem(key);
+
+        // parse the localStorage string and setState
+        try {
+          value = JSON.parse(value);
+          this.props.actions.loadCourses(value);
+          //   this.setState({ [key]: value });
+        } catch (e) {
+          // handle empty string
+          this.props.actions.loadCourses(value);
+          //   this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
   onTitleChange(event) {
     const course = this.state.course;
     course.title = event.target.value;

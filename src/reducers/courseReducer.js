@@ -3,10 +3,13 @@ import initialState from "./initialState";
 
 export default function courseReducer(state = initialState.course, action) {
   switch (action.type) {
-    case types.LOAD_COURSE_SUCCESS:
-      return action.students;
-    case types.CREATE_COURSE:
-      return [...state, Object.assign({}, action.course)];
+    case types.LOAD_COURSES_SUCCESS:
+      return action.courses;
+    case types.CREATE_COURSE: {
+      const newState = [...state, Object.assign({}, action.course)];
+      localStorage.setItem("course", JSON.stringify(newState));
+      return newState;
+    }
     default:
       return state;
   }
