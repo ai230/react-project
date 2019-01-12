@@ -10,11 +10,20 @@ class HomePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      //   student: Object.assign({}, this.props.student)
-      //   students: {
-      //     name: "Rob",
-      //     courses: ["hi", "hihi"]
-      //   }
+      students: [
+        {
+          name: "Paul Molive",
+          courses: []
+        },
+        {
+          name: "Anna Mull",
+          courses: ["Hi", "Hihi"]
+        },
+        {
+          name: "Gail Forcewind",
+          courses: []
+        }
+      ]
     };
 
     this.updateStudentState = this.updateStudentState.bind(this);
@@ -39,33 +48,21 @@ class HomePage extends React.Component {
   }
 
   render() {
-    let students = ["Paul Molive", "Anna Mull", "Gail Forcewind"];
     return (
       <div>
-        <h1>Select CSV with secret Death Star statistics</h1>
         <ReactFileReader handleFiles={this.handleFiles} fileTypes={".csv"}>
           <button className="btn">Upload</button>
         </ReactFileReader>
-        <StudentList students={students} />
+        <StudentList students={this.state.students} />
       </div>
-
-      //   <StudentList />
-      //   <SelectInput
-      //     name="studentId"
-      //     label="Student"
-      //     value="value"
-      //     defaultOption="Select Student"
-      //     options={students}
-      //     onChange={this.updateStudentState}
-      //   />
     );
   }
 }
 
 HomePage.propTypes = {
-  student: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
+
 function mapStateToProps(state, ownProps) {
   return {
     students: state.students
