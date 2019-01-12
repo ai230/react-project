@@ -7,3 +7,7 @@ export function loadCourses(courses) {
 export function createCourse(course) {
   return { type: types.CREATE_COURSE, course };
 }
+
+export function deleteCourse(id) {
+  return { type: types.DELETE_COURSE, id };
+}

@@ -2,6 +2,7 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import * as courseActions from "../../actions/courseActions";
 import { bindActionCreators } from "redux";
+import CourseListRow from "./CourseListRow";
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -12,6 +13,7 @@ class CoursesPage extends React.Component {
 
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
   }
 
   componentDidMount() {
@@ -48,10 +50,11 @@ class CoursesPage extends React.Component {
 
   onClickSave() {
     this.props.actions.createCourse(this.state.course);
+    this.setState({ course: { title: "" } });
   }
 
-  courseRow(course, index) {
-    return <div key={index}>{course.title}</div>;
+  onClickDelete(id) {
+    this.props.actions.deleteCourse(id);
   }
 
   render() {
@@ -64,7 +67,22 @@ class CoursesPage extends React.Component {
           value={this.state.course.title}
         />
         <input type="submit" value="Save" onClick={this.onClickSave} />
-        {this.props.courses.map(this.courseRow)}
+        <table className="table">
+          <thead>
+            <tr>
+              <th>title</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.courses.map(course => (
+              <CourseListRow
+                key={course.title}
+                course={course}
+                onClickDelete={this.onClickDelete}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
