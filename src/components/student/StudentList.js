@@ -1,6 +1,5 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import StudentListRow from "./StudentListRow";
-import CoursesPage from "../course/CoursesPage";
 
 const StudentList = ({ students }) => {
   return (
@@ -18,6 +17,10 @@ const StudentList = ({ students }) => {
       </tbody>
     </table>
   );
+};
+
+StudentList.propTypes = {
+  students: PropTypes.array.isRequired
 };
 
 export default StudentList;

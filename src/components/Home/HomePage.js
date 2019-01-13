@@ -5,11 +5,13 @@ import * as studentActions from "../../actions/studentActions";
 import ReactFileReader from "react-file-reader";
 import SelectInput from "../common/SelectInput";
 import StudentList from "../student/StudentList";
+import RadioButton from "../common/radioButton";
 
 class HomePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      selectedOption: "option2",
       students: [
         {
           name: "Paul Molive",
@@ -27,6 +29,7 @@ class HomePage extends React.Component {
     };
 
     this.updateStudentState = this.updateStudentState.bind(this);
+    this.handleRadioOptionChange = this.handleRadioOptionChange.bind(this);
   }
 
   updateStudentState(event) {
@@ -47,13 +50,23 @@ class HomePage extends React.Component {
     reader.readAsText(files[0]);
   }
 
+  handleRadioOptionChange(event) {
+    this.setState({
+      selectedOption: event.target.value
+    });
+  }
+
   render() {
     return (
       <div>
+        <StudentList students={this.state.students} />
+        <RadioButton
+          selectedOption={this.state.selectedOption}
+          onChange={this.handleRadioOptionChange}
+        />
         <ReactFileReader handleFiles={this.handleFiles} fileTypes={".csv"}>
           <button className="btn">Upload</button>
         </ReactFileReader>
-        <StudentList students={this.state.students} />
       </div>
     );
   }
