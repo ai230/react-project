@@ -1,11 +1,9 @@
 import * as types from "../actions/actionTypes";
 
-export function loadStudentsSuccess(students) {
-  return { type: types.LOAD_STUDENT_SUCCESS };
+export function loadStudents(students) {
+  return { type: types.LOAD_STUDENT_SUCCESS, students };
 }
 
-export function loadStudents(studentList) {
-  return function(dispatch) {
-    loadStudentsSuccess(studentList);
-  };
+export function fetchStudents(students) {
+  return { type: types.FETCH_STUDENT_SUCCESS, students };
 }
