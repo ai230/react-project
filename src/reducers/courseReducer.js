@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 function updateLocalStorage(updatedState) {
-  localStorage.setItem("course", JSON.stringify(updatedState));
+  localStorage.setItem("courses", JSON.stringify(updatedState));
 }
 
 export default function courseReducer(state = initialState.course, action) {
@@ -23,7 +23,7 @@ export default function courseReducer(state = initialState.course, action) {
       const list = [...state];
       // filter out the item being deleted
       const updatedState = list.filter(item => item.title !== action.id);
-      localStorage.setItem("course", JSON.stringify(updatedState));
+      localStorage.setItem("courses", JSON.stringify(updatedState));
       return updatedState;
     }
     default:

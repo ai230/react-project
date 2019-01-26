@@ -6,13 +6,14 @@ const StudentList = ({ students }) => {
     <table className="table">
       <thead>
         <tr>
+          <th>id</th>
           <th>Name</th>
           <th>Courses</th>
         </tr>
       </thead>
       <tbody>
         {students.map(student => (
-          <StudentListRow key={student.name} value={student} />
+          <StudentListRow key={student.id} value={student} />
         ))}
       </tbody>
     </table>

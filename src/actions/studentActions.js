@@ -12,6 +12,6 @@ export function loadAvailableCourses(courses) {
   return { type: types.LOAD_AVAILABLE_COURSES, courses };
 }
 
-export function registerCourses(course, student) {
-  return { type: types.REGISTER_COURSES, course, student };
+export function registerCourses(courses, studentId, students) {
+  return { type: types.REGISTER_COURSES, courses, studentId, students };
 }

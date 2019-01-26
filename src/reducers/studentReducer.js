@@ -15,8 +15,10 @@ export default function studentReducer(state = initialState.students, action) {
       return action.students;
 
     case types.REGISTER_COURSES:
-      debugger;
-      return action.students;
+      let students = [...state];
+      students[action.studentId].courses = action.courses;
+      updateLocalStorage(students);
+      return students;
 
     case types.LOAD_AVAILABLE_COURSES:
       return action.courses;

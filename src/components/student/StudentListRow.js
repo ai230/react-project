@@ -4,11 +4,11 @@ import { Link } from "react-router";
 const StudentListRow = student => {
   return (
     <tr>
+      <td>{student.value.id}</td>
       <td>
-        <Link to={"/" + student.value.name}>{student.value.name}</Link>
-        {/* <a href="" target="_blank">
+        <Link to={"/" + student.value.id + "/" + student.value.name}>
           {student.value.name}
-        </a> */}
+        </Link>
       </td>
       <td>{student.value.courses}</td>
     </tr>

@@ -73,19 +73,26 @@ class HomePage extends React.Component {
   fetchStudents() {
     let temp = [
       {
+        id: 0,
         name: "Paul Molive",
         courses: []
       },
       {
+        id: 1,
         name: "Anna Mull",
-        courses: ["Hi", "Hihi"]
+        courses: []
       },
       {
+        id: 2,
         name: "Gail Forcewind",
         courses: []
       }
     ];
+
     let students_copy = this.state.students;
+    while (students_copy.length > 0) {
+      students_copy.pop();
+    }
     temp.map(item => {
       students_copy.push(item);
     });
