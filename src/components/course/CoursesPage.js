@@ -8,7 +8,7 @@ class CoursesPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      course: { title: "" }
+      course: { id: 0, title: "" }
     };
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -44,6 +44,7 @@ class CoursesPage extends React.Component {
 
   onTitleChange(event) {
     const course = this.state.course;
+    course.id = this.props.courses.length;
     course.title = event.target.value;
     this.setState({ course: course });
   }
@@ -76,7 +77,7 @@ class CoursesPage extends React.Component {
           <tbody>
             {this.props.courses.map(course => (
               <CourseListRow
-                key={course.title}
+                key={course.id}
                 course={course}
                 onClickDelete={this.onClickDelete}
               />

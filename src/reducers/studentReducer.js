@@ -14,6 +14,13 @@ export default function studentReducer(state = initialState.students, action) {
       updateLocalStorage(action.students);
       return action.students;
 
+    case types.REGISTER_COURSES:
+      debugger;
+      return action.students;
+
+    case types.LOAD_AVAILABLE_COURSES:
+      return action.courses;
+
     default:
       return state;
   }

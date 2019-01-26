@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router";
 
 const StudentListRow = student => {
   return (
     <tr>
       <td>
-        <a href="" target="_blank">
+        <Link to={"/" + student.value.name}>{student.value.name}</Link>
+        {/* <a href="" target="_blank">
           {student.value.name}
-        </a>
+        </a> */}
       </td>
       <td>{student.value.courses}</td>
     </tr>

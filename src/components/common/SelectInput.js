@@ -21,7 +21,11 @@ const SelectInput = ({
         >
           <option value="">{defaultOption}</option>
           {options.map(option => {
-            return <option value="">{option}</option>;
+            return (
+              <option key={option.id} value={option.title}>
+                {option.title}
+              </option>
+            );
           })}
         </select>
       </div>

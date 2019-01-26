@@ -7,3 +7,11 @@ export function loadStudents(students) {
 export function fetchStudents(students) {
   return { type: types.FETCH_STUDENT_SUCCESS, students };
 }
+
+export function loadAvailableCourses(courses) {
+  return { type: types.LOAD_AVAILABLE_COURSES, courses };
+}
+
+export function registerCourses(course, student) {
+  return { type: types.REGISTER_COURSES, course, student };
+}
